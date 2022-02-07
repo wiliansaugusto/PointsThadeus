@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+body {
+    height: 100%;
+}
+
+.corpodashboard {
+    flex-flow: row wrap;
+    height: 100%;
+    padding-bottom: 15px;
+}
+
+.primeiraLinha {
+    padding: 0.625rem;
+    font-weight: 500;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.segundaLinha {
+    display: flex;
+    flex-direction: row;
+}
+
+td {
+    text-align: justify;
+    vertical-align: middle;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.w15 {
+    width: 15%;
+}
+
+.btn {
+    width: 4.375rem;
+    font-size: 0.875rem !important;
+}
+
+.btnLarge {
+    background-image: linear-gradient(240deg, rgb(129, 55, 114), rgb(5, 127, 183, 5)) !important;
+    width: 100%;
+    color: ivory !important;
+    font-size: 1.5rem !important;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.linhaBotao {
+    margin-bottom: 0.9375rem;
+    color: ivory !important;
+    font-size: 1.5rem !important;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.btnFechar {
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.linhaFechar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.card-pupilo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4.8125rem;
+}
+
+footer {
+    margin-top: 1.25rem !important;
+}
+
+#segundaLInhaCollapse {
+    background-image: linear-gradient(120deg, rgba(243, 236, 171, 0.47), rgba(125, 234, 234, 0.47));
+}
+
+#terceiralinhaCollapse {
+    background-image: linear-gradient(120rad, rgba(40, 201, 238, 0.76), rgba(191, 191, 191, 0.47));
+}
+
+#terceiralinhaCollapse,
+#segundaLInhaCollapse h2 {
+    color: rgb(33, 2, 145);
+    font-family: 'Mochiy Pop P One', sans-serif;
+    padding: 0.625rem;
+    text-shadow: rgb(146, 146, 146) 0.1em 0.1em 0.2em;
+    margin-top: 1.5625rem;
+}

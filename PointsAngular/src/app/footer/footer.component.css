@@ -1,0 +1,15 @@
+.app-footer-container {
+    justify-content: flex-end;
+    background-color: var(--color-roxo);
+}
+
+.app-footer-container span {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.tb {
+    color: whitesmoke;
+    margin-left: 0.125rem;
+}

@@ -1,0 +1,41 @@
+.corpoHome {
+    width: 100%;
+    padding-top: 1.25rem;
+    background-image: var(--color-azul-roxo);
+    padding-bottom: 2.5rem;
+}
+
+p {
+    font-size: 1rem;
+    text-align: justify;
+    color: white;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+a:hover {
+    transition: 300ms;
+    font-size: 32px;
+}
+
+table {
+    color: wheat;
+}
+
+table th {
+    color: wheat;
+    font-size: 24px;
+    padding-bottom: 0.625rem;
+}
+
+.nomePrincipal {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3.125rem;
+    margin-top: 1.25rem;
+    color: white;
+}

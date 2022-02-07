@@ -1,0 +1,78 @@
+.corpoLogin {
+    text-align: justify;
+    padding-top: 1.5625rem;
+    padding-bottom: 3.125rem;
+    margin: 0px;
+}
+
+.login-card {
+    border-left-style: double;
+    border-left-color: yellow;
+    border-left-width: 10px;
+}
+
+.card-foto {
+    height: 25rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 3.125rem;
+    margin-top: 2.1875rem;
+    font-family: 'Lora', serif;
+}
+
+.card-foto img {
+    border-radius: 50%;
+    max-width: 30%;
+}
+
+.form-corpo h2 {
+    text-align: center;
+    margin-top: 3.125rem;
+}
+
+.flex-login {
+    text-align: center;
+}
+
+mat-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.875rem;
+}
+
+mat-form-field {
+    width: 80%;
+}
+
+mat-form-field input {
+    padding: 15px;
+}
+
+hr {
+    margin-top: 10px;
+    width: 50%;
+    margin-left: 25%;
+    align-self: center;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btns button {
+    width: 43.75rem;
+    margin-bottom: 30px;
+}
+
+.img-fluid {
+    max-width: 18.75rem;
+    max-height: 18.75rem;
+}

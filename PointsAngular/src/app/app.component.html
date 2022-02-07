@@ -1,0 +1,42 @@
+<div class="main-container">
+    <app-header [sidenav]="sidenav"></app-header>
+
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav class="w-10p" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+            <mat-list>
+                <mat-list-item (click)="sidenav.toggle()">
+                    <mat-icon>close</mat-icon>
+                    <span class="ml-15"> <a>  Fechar</a></span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                    <mat-icon>home</mat-icon>
+                    <span class="ml-15"> <a routerLink="" (click)="sidenav.toggle()">Home</a></span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                    <mat-icon>space_dashboard</mat-icon>
+                    <span class="ml-15"> <a routerLink="dashboard" (click)="sidenav.toggle()">
+              Dashboard</a></span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                    <mat-icon>group_add</mat-icon>
+                    <span class="ml-15"> <a routerLink="create-user" (click)="sidenav.toggle()">
+              Cadastre - se</a></span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+            </mat-list>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content class="principal">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    <app-footer></app-footer>
+</div>

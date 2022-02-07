@@ -1,0 +1,42 @@
+<div class="row corpoLogin backgroundOficial">
+    <div class="col-sm-12 col-lg-3">
+    </div>
+    <div class="col-sm-12 col-lg-6">
+        <div>
+            <mat-card class="login-card">
+                <mat-card-title class="card-foto">
+                    <img class="img-fluid img-thumbnail" src="{{urlImagem}}">
+                    <h2>Points Tadeus</h2>
+                </mat-card-title>
+                <hr>
+                <mat-card-content class="form-corpo jumbotrom">
+                    <h2>Entrar</h2>
+                    <hr style="margin-top: 50px;">
+                    <form [formGroup]="loginForm" #loginFormDirective="ngForm">
+
+                        <div class="flex-login">
+                            <mat-form-field>
+                                <mat-label>Email</mat-label>
+                                <input matInput type="text" formControlName="email" title="Insira o seu email">
+
+                            </mat-form-field>
+                        </div>
+                        <div class="flex-login">
+                            <mat-form-field>
+                                <mat-label>Senha</mat-label>
+                                <input class="input-text" matInput type="password" formControlName="password" title="Sua senha">
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions class="btns">
+                    <button mat-raised-button color="warn" (click)="cancel()">
+                Cancelar
+              </button>
+                    <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-3"></div>
+</div>

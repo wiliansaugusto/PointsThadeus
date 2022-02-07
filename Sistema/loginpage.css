@@ -1,0 +1,32 @@
+html,
+body {
+    height: 100%;
+}
+
+.corpoLogin {
+    height: 100%;
+    flex-flow: row wrap;
+    justify-content: left;
+    align-items: center;
+    background-image: linear-gradient(180deg, rgb(5, 127, 183, 5), rgb(129, 55, 114));
+}
+
+.imagemEntrada {
+    margin-top: 0.9375rem;
+    width: 7.5rem !important;
+    padding: 0.3125rem;
+    position: relative;
+    left: 40%;
+    border-radius: 60% !important;
+    border-style: solid !important;
+    border-color: black !important;
+}
+
+.card {
+    margin-top: 1.5625rem;
+    margin-bottom: 1.625rem;
+}
+
+.btn {
+    background-image: linear-gradient(240deg, rgb(129, 55, 114), rgb(5, 127, 183, 5)) !important;
+}

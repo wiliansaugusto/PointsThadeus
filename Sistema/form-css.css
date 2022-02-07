@@ -1,0 +1,20 @@
+/*
+*Variaveis de cor
+*/
+:root{
+    --color-azul:rgb(5, 70, 100);
+    --color-red:#B82601;
+    --color-roxo:#813772;
+}
+
+.card-body hr{
+    color:var(--color-azul);
+    height: 0.25rem !important;
+}
+.card-title{
+    flex-flow: row wrap;
+    align-items: center;
+    justify-self: baseline;
+    text-align: center;
+
+}

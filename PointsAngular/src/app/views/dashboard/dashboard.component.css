@@ -1,0 +1,119 @@
+.corpoDashboard {
+    margin-bottom: 0;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.cabecalho-dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.cabecalho-dashboard h3 {
+    width: 100%;
+    font-size: 40px;
+    align-self: center;
+    text-shadow: red 0.1em 0.1em 0.2em;
+    color: rgb(250, 250, 248);
+    font-weight: 7;
+}
+
+.cabecalho-dashboard mat-card-content {
+    text-align: center;
+    font-size: 1.25rem;
+    padding-top: 0.3125rem;
+}
+
+.button-row {
+    padding-top: 2.1875rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+
+.button-row button {
+    width: 12.5rem;
+}
+
+section {
+    margin-top: 25px;
+}
+
+.card-title {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    height: 1.875rem;
+    justify-content: space-between;
+    padding-left: 1.5625rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.card-title button {
+    background-color: red;
+    justify-content: right;
+}
+
+.card-title mat-icon {
+    font-size: 1.25rem;
+}
+
+.tblMetas {
+    height: 25rem;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 2.5rem;
+}
+
+table {
+    width: 100%;
+}
+
+.tblMetas button {
+    width: 100%;
+    margin-top: 0.625rem;
+    margin-bottom: 0.3125rem;
+}
+
+.descricao {
+    width: 40%;
+}
+
+.pontos {
+    width: 30%;
+}
+
+.btn-plus button {
+    color: blanchedalmond;
+    width: 200px;
+    margin-left: 1.25rem;
+}
+
+.btn-plus {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.btn-resgatar {
+    background-color: rgb(21, 221, 14);
+    color: black;
+}
+
+.btn-excluir {
+    color: black;
+    background-color: rgb(233, 25, 43);
+}
+
+.btn-editar {
+    color: black;
+    background-color: rgb(255, 242, 62);
+}
+
+.titulo-card {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}

@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+:root {
+    --color-azul: rgb(0, 127, 185);
+    --color-red: #B82601;
+    --color-roxo: #803470;
+    --color-azul-roxo: linear-gradient(180deg, rgba(0, 127, 185), rgb(129, 55, 114, 09));
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.corpo {
+    padding: 0.3125rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.flex-rw-cntr {
+    display: flex !important;
+    flex-direction: row;
+}
+
+.flex-clmn {
+    display: flex;
+    flex-flow: column;
+}
+
+.flx-center-row {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flx-evely {
+    justify-content: space-evenly;
+}
+
+.backgroundOficial {
+    background-image: var(--color-azul-roxo);
+}

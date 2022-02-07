@@ -1,0 +1,189 @@
+<div class="row corpoDashboard backgroundOficial">
+    <div class="col-sm-12 col-lg-1"></div>
+    <div class="text-justify col-sm-12 col-lg-9">
+        <div class="cabecalho-dashboard">
+            <h3>Bem Vindo Fulano</h3>
+            <mat-card>
+                <mat-card-title>Points</mat-card-title>
+                <mat-divider inset></mat-divider>
+                <mat-card-content> 1500 </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="actions">
+            <section>
+                <div class="button-row">
+                    <button type="button" class="btn btn-primary" (click)="isMetasCollapsed = !isMetasCollapsed" [attr.aria-expanded]="!isMetasCollapsed" aria-controls="collapseExample">
+                        Mestre</button>
+                    <button type="button" class="btn btn-primary" (click)="isPupiloCollapsed = !isPupiloCollapsed" [attr.aria-expanded]="!isPupiloCollapsed" aria-controls="collapseExample">
+                            Pupilo</button>
+                    <button type="button" class="btn btn-primary" (click)="isBonusCollapsed = !isBonusCollapsed" [attr.aria-expanded]="!isBonusCollapsed" aria-controls="collapseExample">
+                            Bonus</button>
+                    <button type="button" class="btn btn-danger" (click)="isPenalidadeCollapsed = !isPenalidadeCollapsed" [attr.aria-expanded]="!isPenalidadeCollapsed" aria-controls="collapseExample">
+                            Penalidade</button>
+                </div>
+            </section>
+            <div>
+                <section>
+                    <div id="collapseExample" [ngbCollapse]="isMetasCollapsed">
+                        <div class="card ">
+                            <div class="card-title ">
+                                <div class="btn-plus">
+                                    <h1>Fulano Mestre </h1>
+                                    <div>
+                                        <button mat-flat-button aria-label="Example icon button with a delete icon">
+                                    <mat-icon>add</mat-icon> Nova Meta
+                                  </button>
+
+                                        <button mat-flat-button aria-label="Example icon button with a delete icon">
+                                    <mat-icon>add</mat-icon>Nova Tarefa
+                                  </button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" (click)="isMetasCollapsed = !isMetasCollapsed" [attr.aria-expanded]="!isMetasCollapsed" aria-controls="collapseExample">
+                                    <mat-icon>close</mat-icon></button>
+                            </div>
+                            <div class="card-body">
+
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6 ">
+                                        <!--relacionado as metas-->
+                                        <div class="tblMetas  mat-elevation-z8">
+                                            <table class="" mat-table [dataSource]="dataSource">
+
+
+                                                <!-- Position Column -->
+                                                <ng-container matColumnDef="Meta">
+                                                    <th class="descricao" mat-header-cell *matHeaderCellDef>Meta </th>
+                                                    <td class=" descricao text-justify" mat-cell *matCellDef="let element">
+                                                        <p> {{element.descricao}}</p>
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Name Column -->
+                                                <ng-container matColumnDef="pontos">
+                                                    <th class="text-center pontos" mat-header-cell *matHeaderCellDef> Pontos </th>
+                                                    <td class="text-center" mat-cell *matCellDef="let element">
+                                                        <p>{{element.pontos}}</p>
+                                                    </td>
+                                                </ng-container>
+
+                                                <!-- Weight Column -->
+                                                <ng-container matColumnDef="actions">
+                                                    <th class=" text-center " mat-header-cell *matHeaderCellDef> Ações </th>
+                                                    <td class=" text-center" mat-cell *matCellDef="let element">
+                                                        <button class="btn btn-resgatar" type="button">
+                                                            <mat-icon>done_all</mat-icon> Resgatar{{element.id}}</button>
+                                                        <button class="btn btn-editar" type="button">
+                                                            <mat-icon>edit</mat-icon> Editar</button>
+                                                        <button class="btn btn-excluir" type="button">
+                                                                <mat-icon>close</mat-icon> Excluir</button>
+                                                    </td>
+                                                </ng-container>
+
+
+                                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 ">
+                                        <div class="tblMetas  mat-elevation-z8">
+                                            <table class="table ">
+                                                <thead>
+                                                    <th class="descricao">Tarefa</th>
+                                                    <th class="pontos text-center">Pontos</th>
+                                                    <th class="text-center">Ações</th>
+                                                </thead>
+                                                <tbody *ngFor="let task of DATATASK">
+                                                    <td class="">{{task.descricao}}</td>
+                                                    <td class="text-center">{{task.pontos}}</td>
+                                                    <td>
+                                                        <button class="btn btn-resgatar" type="button">
+                                                            <mat-icon>done_all</mat-icon> Resgatar{{task.id}}</button>
+                                                        <button class="btn btn-editar" type="button">
+                                                            <mat-icon>edit</mat-icon> Editar</button>
+                                                        <button class="btn btn-excluir" type="button">
+                                                                <mat-icon>close</mat-icon> Excluir</button>
+                                                    </td>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            <div>
+                <section>
+                    <div id="collapseExample" [ngbCollapse]="isPupiloCollapsed">
+                        <div class="card ">
+                            <div class="card-title">
+                                <h1>Pupilo</h1>
+                                <button type="button" class="btn btn-primary" (click)="isPupiloCollapsed = !isPupiloCollapsed" [attr.aria-expanded]="!isPupiloCollapsed" aria-controls="collapseExample">
+                                    <mat-icon>close</mat-icon></button>
+                            </div>
+                            <div class="card-body">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
+                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
+                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
+                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
+                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            <div>
+                <section>
+                    <div id="collapseExample" [ngbCollapse]="isBonusCollapsed">
+                        <div class="card ">
+                            <div class="card-title">
+                                <button type="button" class="btn btn-primary" (click)="isBonusCollapsed = !isBonusCollapsed" [attr.aria-expanded]="!isBonusCollapsed" aria-controls="collapseExample">
+                                    <mat-icon>close</mat-icon></button>
+                            </div>
+                            <div class="card-body">
+                                <h1>Nova Tarefa</h1>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
+                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
+                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
+                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
+                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            <div>
+                <section>
+                    <div id="collapseExample" [ngbCollapse]="isPenalidadeCollapsed">
+                        <div class="card ">
+                            <div class="card-title">
+                                <button type="button" class="btn btn-primary" (click)="isPenalidadeCollapsed = !isPenalidadeCollapsed" [attr.aria-expanded]="!isPenalidadeCollapsed" aria-controls="collapseExample">
+                                    <mat-icon>close</mat-icon></button>
+                            </div>
+                            <div class="card-body">
+                                <h1>Nova Penalidade</h1>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
+                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
+                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
+                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
+                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-2">
+
+    </div>
+</div>

@@ -7,7 +7,6 @@
     <title>Points Thadeus</title>
     <!--Estilo propio-->
     <link rel="stylesheet" href="estilo.css" />
-
     <!--Bootstrap-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -26,55 +25,21 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
       rel="stylesheet"
     />
+
+
+    
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="Access-Control-Allow-Headers" content="X-Requested-With" /> 
+
+    
+    <!--favicon-->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
   </head>
   <body>
+<?php @include("navegador.html")?>
 
-    <div class="row cabeca">
-        <div class="col-lg-12 col-sm-12">
-            <nav class="navbarEstilo navbar navbar-light  fixed-top textocabeca ">
-                <div class="container-fluid ">
-                  <a  class="navbar-brand " href="#">Points Thadeus</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
-                  aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header textocabeca">
-                      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Points Thadeus</h5>
-                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body textocabeca ">
-                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <!--
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          
-                          <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                              <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                      -->
-                      </div>
-                  </div>
-                </div>
-              </nav>
-        </div>
-
-    </div>
     <div class="row corpo ">
       <div class="col barraEsquerda"></div>
       <div class="col-lg-8 col-md-8 col-sm-12 container">
@@ -179,28 +144,9 @@
       </div>
       <div class="col barraDireita"></div>
     </div>
-    <div class="row pe">
-      <div class="col-lg-3 col-sm-12">
-        <p class="titulorodape">
-          Desenvolvido por Willians Augusto<span class="material-icons-round">
-            copyright
-          </span>
-        </p>
-        <p class="corporodape">
-          <a class="teste" target="_blank" href="https://linkedin.com/in/williansaugusto"
-            ><span class="material-icons-round">add_reaction</span> &nbsp;&nbsp;Linkedin</a>  
-          <a class="teste"
-            href=" https://github.com/wiliansaugusto/PointsThadeus"
-            target="_blank"
-          ><span class="material-icons">whatsapp</span> &nbsp;&nbsp;GitHub do projeto</a
-          >
-        </span>          
-        </p>
-      </div>
-      <div class="col-lg-6 col-sm-12">
-          
-      </div>
-    </div>
+<footer>
+  <?php @include("footer.html")?>
+</footer>
 
 </body>
 </html>

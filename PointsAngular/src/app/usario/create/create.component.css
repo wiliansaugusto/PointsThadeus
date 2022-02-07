@@ -1,0 +1,27 @@
+.corpo {
+    height: 100%;
+    width: 100%;
+    background-image: var(--color-azul-roxo);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 1.5625rem;
+    padding-bottom: 1.875rem;
+}
+
+.form-style {
+    margin-top: 1.5625rem;
+    font-family: 'Bebas Neue', cursive;
+}
+
+mat-label {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 800;
+    padding: 0.625rem;
+}
+
+.title-card {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1.25rem;
+}
