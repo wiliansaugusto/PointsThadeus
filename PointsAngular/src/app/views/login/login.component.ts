@@ -15,12 +15,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
  
-   imagemRandon = ["../../../assets/entrada.jpg",
-   "../../../assets/fotoprancha.jpeg",
-   "../../../assets/naPraia.jpeg",
+   imagemRandon = [
   '../../../assets/desenho1.jpg',
   '../../../assets/desenho2.jpg',
-   '../../../assets/desenho4.jpg' ];
+  '../../../assets/desenho3.jpg',
+  '../../../assets/desenho4.jpg' ];
 
    
   @Output() public formCloseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
