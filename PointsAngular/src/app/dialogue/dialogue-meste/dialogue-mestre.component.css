@@ -1,0 +1,21 @@
+.corpoDialogue {
+    max-width: 100%;
+}
+
+mat-form-field {
+    font-size: 18px;
+}
+
+.tm10 {
+    margin-top: 3.4375rem;
+}
+
+.inputPontos {
+    width: 30%;
+    margin-left: 0.9375rem;
+}
+
+.btnSalvar {
+    background-color: rgb(115, 240, 110);
+    color: white;
+}

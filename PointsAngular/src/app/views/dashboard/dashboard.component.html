@@ -1,21 +1,154 @@
 <div class="row corpoDashboard backgroundOficial">
     <div class="col-sm-12 col-lg-1"></div>
     <div class="text-justify col-sm-12 col-lg-9">
-        <div class="cabecalho-dashboard">
-            <h3>Bem Vindo Fulano</h3>
+        <div class="cabecalho-dashboard" #modulos>
+            <h3>Bem Vindo {{capitao}}</h3>
             <mat-card>
                 <mat-card-title>Points</mat-card-title>
                 <mat-divider inset></mat-divider>
-                <mat-card-content> 1500 </mat-card-content>
+                <mat-card-content> {{pontos}} </mat-card-content>
             </mat-card>
         </div>
-        <div class="actions">
+        <div class="actions" *ngIf="categoria == 'marujo'">
+            <section>
+                <mat-card>
+                    <h3>Olá marujo </h3>
+                    <p>Abaixo voce encontrará as suas missões e os premios! </p>
+                    <p>Quanto mais missões você conquistar mais proximo do seu premio você estará</p>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6 ">
+                                <!--relacionado as metas-->
+                                <mat-card *ngIf="dataSource.length == 0">
+                                    <mat-card-content>
+                                        <h3>Não há Premios para exibir</h3>
+                                    </mat-card-content>
+                                </mat-card>
+                                <div class="tblMetas  mat-elevation-z8" *ngIf="dataSource.length >0">
+                                    <table class="" mat-table [dataSource]="dataSource">
+
+
+                                        <!-- Position Column -->
+                                        <ng-container matColumnDef="premio">
+                                            <th class="descricao" mat-header-cell *matHeaderCellDef>Premio </th>
+                                            <td class=" descricao text-justify" mat-cell *matCellDef="let element">
+                                                <p> {{element.premio}}</p>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Name Column -->
+                                        <ng-container matColumnDef="pontosPremio">
+                                            <th class="text-center pontos" mat-header-cell *matHeaderCellDef> Pontos </th>
+                                            <td class="text-center" mat-cell *matCellDef="let element">
+                                                <p>{{element.pontosPremio}}</p>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Weight Column -->
+                                        <ng-container matColumnDef="actions">
+                                            <th class=" text-center " mat-header-cell *matHeaderCellDef> Ações </th>
+                                            <td class=" text-center" mat-cell *matCellDef="let element">
+                                                <button class="btn btn-resgatar" type="button" (click)="decrementaPoints(element.pontosPremio)">
+                                                    <mat-icon>done_all</mat-icon> Resgatar</button>
+
+
+                                            </td>
+                                        </ng-container>
+
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6 ">
+                                <mat-card *ngIf="DATATASK.length == 0">
+                                    <mat-card-content>
+                                        <h3>Não há Premios para exibir</h3>
+                                    </mat-card-content>
+                                </mat-card>
+                                <div class="tblMetas  mat-elevation-z8" *ngIf="DATATASK.length > 0">
+
+                                    <table class="table ">
+                                        <thead>
+                                            <th class="descricao">Missão</th>
+                                            <th class="pontos text-center">Pontos</th>
+                                            <th class="text-center">Ações</th>
+                                        </thead>
+                                        <tbody *ngFor="let task of DATATASK">
+                                            <td class="">{{task.missao}}</td>
+                                            <td class="text-center">{{task.pontos_missao}}</td>
+                                            <td>
+                                                <button class="btn btn-resgatar" type="button" (click)="addPoints(task.pontos_missao)">
+                                                    <mat-icon>done_all</mat-icon> Conquistar</button>
+                                            </td>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="MT30">
+                                    <div class="texto-nulo" *ngIf="BONUSUSER.length == 0">
+                                        <mat-card>
+                                            <mat-card-content>
+                                                Sem bonus salvos
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div *ngIf="BONUSUSER.length > 0">
+
+                                        <table class="table  ">
+                                            <thead>
+                                                <th>Bonus</th>
+                                                <th>Data</th>
+                                                <th>Pontos</th>
+                                            </thead>
+                                            <tbody *ngFor="let bonus of BONUSUSER">
+                                                <td class="tbInicio">{{bonus.bonus}}</td>
+                                                <td class="tbMeio">{{bonus.updated_at | date:'dd/ MMM /YYYY'}}</td>
+                                                <td class="text-center"><strong>{{bonus.pontos_bonus}} pontos</strong></td>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="MT30">
+                                    <div class="texto-nulo" *ngIf="PENALIDADESUSER.length == 0">
+                                        <mat-card>
+                                            <mat-card-content>
+                                                Sem penalidades atribuidas
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div *ngIf="PENALIDADESUSER.length > 0">
+                                        <table class="table  ">
+                                            <thead>
+                                                <th>Bonus</th>
+                                                <th>Data</th>
+                                                <th class="text-center">Pontos</th>
+                                            </thead>
+                                            <tbody *ngFor="let penalidade of PENALIDADESUSER">
+                                                <td class="tbInicio">{{penalidade.penalidade}}</td>
+                                                <td class="tbMeio">{{penalidade.updated_at | date:'dd/ MMM /YYYY'}}</td>
+                                                <td class="text-center"><strong>{{penalidade.pontos_penalidade}} pontos</strong> </td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </section>
+        </div>
+        <div class="actions" *ngIf="categoria == 'capitao'">
             <section>
                 <div class="button-row">
                     <button type="button" class="btn btn-primary" (click)="isMetasCollapsed = !isMetasCollapsed" [attr.aria-expanded]="!isMetasCollapsed" aria-controls="collapseExample">
-                        Mestre</button>
+                        Capitão</button>
                     <button type="button" class="btn btn-primary" (click)="isPupiloCollapsed = !isPupiloCollapsed" [attr.aria-expanded]="!isPupiloCollapsed" aria-controls="collapseExample">
-                            Pupilo</button>
+                            Marujo</button>
                     <button type="button" class="btn btn-primary" (click)="isBonusCollapsed = !isBonusCollapsed" [attr.aria-expanded]="!isBonusCollapsed" aria-controls="collapseExample">
                             Bonus</button>
                     <button type="button" class="btn btn-danger" (click)="isPenalidadeCollapsed = !isPenalidadeCollapsed" [attr.aria-expanded]="!isPenalidadeCollapsed" aria-controls="collapseExample">
@@ -28,14 +161,14 @@
                         <div class="card ">
                             <div class="card-title ">
                                 <div class="btn-plus">
-                                    <h1>Fulano Mestre </h1>
+                                    <h1>Capitão {{capitao}} </h1>
                                     <div>
-                                        <button mat-flat-button aria-label="Example icon button with a delete icon">
-                                    <mat-icon>add</mat-icon> Nova Meta
+                                        <button class="btn_novo" mat-flat-button mat-button (click)="openDialog()">
+                                    <mat-icon>add</mat-icon> Novo Prêmio
                                   </button>
 
-                                        <button mat-flat-button aria-label="Example icon button with a delete icon">
-                                    <mat-icon>add</mat-icon>Nova Tarefa
+                                        <button class="btn_novo" mat-flat-button (click)="openPupilo()">
+                                    <mat-icon>add</mat-icon> Nova Missão
                                   </button>
                                     </div>
                                 </div>
@@ -43,28 +176,31 @@
                                     <mat-icon>close</mat-icon></button>
                             </div>
                             <div class="card-body">
-
-
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6 ">
                                         <!--relacionado as metas-->
-                                        <div class="tblMetas  mat-elevation-z8">
+                                        <mat-card *ngIf="dataSource.length == 0">
+                                            <mat-card-content>
+                                                <h3>Não há Premios para exibir</h3>
+                                            </mat-card-content>
+                                        </mat-card>
+                                        <div class="tblMetas  mat-elevation-z8" *ngIf="dataSource.length >0">
                                             <table class="" mat-table [dataSource]="dataSource">
 
 
                                                 <!-- Position Column -->
-                                                <ng-container matColumnDef="Meta">
-                                                    <th class="descricao" mat-header-cell *matHeaderCellDef>Meta </th>
+                                                <ng-container matColumnDef="premio">
+                                                    <th class="descricao" mat-header-cell *matHeaderCellDef>Premio </th>
                                                     <td class=" descricao text-justify" mat-cell *matCellDef="let element">
-                                                        <p> {{element.descricao}}</p>
+                                                        <p> {{element.premio}}</p>
                                                     </td>
                                                 </ng-container>
 
                                                 <!-- Name Column -->
-                                                <ng-container matColumnDef="pontos">
+                                                <ng-container matColumnDef="pontosPremio">
                                                     <th class="text-center pontos" mat-header-cell *matHeaderCellDef> Pontos </th>
                                                     <td class="text-center" mat-cell *matCellDef="let element">
-                                                        <p>{{element.pontos}}</p>
+                                                        <p>{{element.pontosPremio}}</p>
                                                     </td>
                                                 </ng-container>
 
@@ -72,11 +208,10 @@
                                                 <ng-container matColumnDef="actions">
                                                     <th class=" text-center " mat-header-cell *matHeaderCellDef> Ações </th>
                                                     <td class=" text-center" mat-cell *matCellDef="let element">
-                                                        <button class="btn btn-resgatar" type="button">
-                                                            <mat-icon>done_all</mat-icon> Resgatar{{element.id}}</button>
-                                                        <button class="btn btn-editar" type="button">
-                                                            <mat-icon>edit</mat-icon> Editar</button>
-                                                        <button class="btn btn-excluir" type="button">
+                                                        <button class="btn btn-resgatar" type="button" (click)="decrementaPoints(element.pontosPremio)">
+                                                            <mat-icon>done_all</mat-icon> Resgatar</button>
+
+                                                        <button class="btn btn-excluir" type="button" (click)="deletePremio(element.id)">
                                                                 <mat-icon>close</mat-icon> Excluir</button>
                                                     </td>
                                                 </ng-container>
@@ -88,23 +223,28 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-lg-6 ">
-                                        <div class="tblMetas  mat-elevation-z8">
+                                        <mat-card *ngIf="DATATASK.length == 0">
+                                            <mat-card-content>
+                                                <h3>Não há Premios para exibir</h3>
+                                            </mat-card-content>
+                                        </mat-card>
+                                        <div class="tblMetas  mat-elevation-z8" *ngIf="DATATASK.length > 0">
+
                                             <table class="table ">
                                                 <thead>
-                                                    <th class="descricao">Tarefa</th>
+                                                    <th class="descricao">Missão</th>
                                                     <th class="pontos text-center">Pontos</th>
                                                     <th class="text-center">Ações</th>
                                                 </thead>
                                                 <tbody *ngFor="let task of DATATASK">
-                                                    <td class="">{{task.descricao}}</td>
-                                                    <td class="text-center">{{task.pontos}}</td>
+                                                    <td class="">{{task.missao}}</td>
+                                                    <td class="text-center">{{task.pontos_missao}}</td>
                                                     <td>
-                                                        <button class="btn btn-resgatar" type="button">
-                                                            <mat-icon>done_all</mat-icon> Resgatar{{task.id}}</button>
-                                                        <button class="btn btn-editar" type="button">
-                                                            <mat-icon>edit</mat-icon> Editar</button>
-                                                        <button class="btn btn-excluir" type="button">
-                                                                <mat-icon>close</mat-icon> Excluir</button>
+                                                        <button class="btn btn-resgatar" type="button" (click)="addPoints(task.pontos_missao)">
+                                                            <mat-icon>done_all</mat-icon> Conquistar</button>
+
+                                                        <button class="btn btn-excluir" type="button" (click)="deleteMission(task.id)">
+                                                                <mat-icon>close</mat-icon> Excluir </button>
                                                     </td>
 
                                                 </tbody>
@@ -123,16 +263,13 @@
                     <div id="collapseExample" [ngbCollapse]="isPupiloCollapsed">
                         <div class="card ">
                             <div class="card-title">
-                                <h1>Pupilo</h1>
+                                <h2>Seus marujos</h2>
                                 <button type="button" class="btn btn-primary" (click)="isPupiloCollapsed = !isPupiloCollapsed" [attr.aria-expanded]="!isPupiloCollapsed" aria-controls="collapseExample">
                                     <mat-icon>close</mat-icon></button>
                             </div>
                             <div class="card-body">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
-                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
-                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
-                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
-                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                                <app-marujo *ngIf="categoria == 'capitao'" [idUsuario]="{idUsuario}"></app-marujo>
+
                             </div>
                         </div>
                     </div>
@@ -142,18 +279,56 @@
             <div>
                 <section>
                     <div id="collapseExample" [ngbCollapse]="isBonusCollapsed">
+
                         <div class="card ">
                             <div class="card-title">
-                                <button type="button" class="btn btn-primary" (click)="isBonusCollapsed = !isBonusCollapsed" [attr.aria-expanded]="!isBonusCollapsed" aria-controls="collapseExample">
+                                <h1 class="tituloForm">Bonus</h1>
+                                <button type="button" class="btn btn-primary" (click)="isBonusCollapsed = !isBonusCollapsed" [attr.aria-expanded]="!isPupiloCollapsed" aria-controls="collapseExample">
                                     <mat-icon>close</mat-icon></button>
                             </div>
+                            <div class="card-subtitle subtitle">
+                                <p>Olha que legal aqui você poderá conceder pontos extras!</p>
+                            </div>
                             <div class="card-body">
-                                <h1>Nova Tarefa</h1>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
-                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
-                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
-                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
-                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                                <form [formGroup]="bonusForm" class="corpo-form">
+                                    <mat-form-field class="input-form textoPontos" appearance="fill">
+                                        <mat-label>Bonus </mat-label>
+                                        <input matInput type="text" formControlName="bonus" placeholder="Ex.Arrumou a cama sozinho" value="">
+                                    </mat-form-field>
+                                    <mat-form-field class="input-form ptNegativo" appearance="fill">
+                                        <mat-label>Pontos Extras </mat-label>
+                                        <input matInput type="number" formControlName="pontos_bonus">
+                                    </mat-form-field>
+
+
+                                </form>
+                                <button class="btn-salvar btn-bonus" mat-raised-button color="primary" (click)="saveBonus()">Salvar Bonus</button>
+
+                                <div class="MT30">
+                                    <div class="texto-nulo" *ngIf="BONUSUSER.length == 0">
+                                        <mat-card>
+                                            <mat-card-content>
+                                                Sem bonus salvos
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div *ngIf="BONUSUSER.length > 0">
+
+                                        <table class="table  ">
+                                            <thead>
+                                                <th>Bonus</th>
+                                                <th>Data</th>
+                                                <th>Pontos</th>
+                                            </thead>
+                                            <tbody *ngFor="let bonus of BONUSUSER">
+                                                <td class="tbInicio">{{bonus.bonus}}</td>
+                                                <td class="tbMeio">{{bonus.updated_at | date:'dd/ MMM /YYYY'}}</td>
+                                                <td class="text-center"><strong>{{bonus.pontos_bonus}} pontos</strong></td>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,16 +340,50 @@
                     <div id="collapseExample" [ngbCollapse]="isPenalidadeCollapsed">
                         <div class="card ">
                             <div class="card-title">
+                                <h1 class="tituloForm">Penalidades</h1>
                                 <button type="button" class="btn btn-primary" (click)="isPenalidadeCollapsed = !isPenalidadeCollapsed" [attr.aria-expanded]="!isPenalidadeCollapsed" aria-controls="collapseExample">
                                     <mat-icon>close</mat-icon></button>
                             </div>
+                            <div class="card-subtitle subtitle ">
+                                <p>É aqui não é uma área legal, mas é necessaria!</p>
+                            </div>
                             <div class="card-body">
-                                <h1>Nova Penalidade</h1>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo id animi non, similique, esse minus commodi reiciendis perspiciatis in perferendis deserunt fugiat exercitationem repellendus cum? Minima aliquam quod iste adipisci. Necessitatibus quos doloribus
-                                quasi nam rem consectetur omnis temporibus sint iste cupiditate, porro eum quod reiciendis ullam aliquid quas non ex tempora, molestiae ut molestias modi placeat amet nihil. Ea? Odit sapiente laudantium quas deleniti molestias
-                                illo magni beatae vel eos ad voluptatum, consectetur iure tenetur ut tempora fugit at labore harum repellat est amet reiciendis! Quam excepturi reprehenderit dolor. Blanditiis minima autem, voluptate facilis adipisci quidem
-                                pariatur delectus temporibus non tempore fugit mollitia ratione similique hic repellat quo eveniet corporis corrupti quam exercitationem ad? Possimus iusto esse expedita quas. Eligendi dolorem sit laudantium animi. Ipsam
-                                temporibus consequatur officia tenetur quae soluta facilis error voluptates! Soluta iste aut porro ut dolores numquam tempore voluptatibus officiis corrupti fuga! Suscipit, aliquid placeat.
+                                <form [formGroup]="penalidadeForm" class="corpo-form">
+                                    <mat-form-field appearance="fill" class="input-form textoPontos">
+                                        <mat-label> Penalidades </mat-label>
+                                        <input matInput type="text" formControlName="penalidade" placeholder="Ex. Faltou a aula" value="">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill" class="input-form ptNegativo">
+                                        <mat-label>Pontos Negativo </mat-label>
+                                        <input matInput type="number" formControlName="pontos_penalidade">
+                                    </mat-form-field>
+
+
+                                </form>
+                                <button class="btn-penalidade" mat-raised-button color="primary" (click)="savePenalidade()">Salvar Penalidade</button>
+                                <div class="MT30">
+                                    <div class="texto-nulo" *ngIf="PENALIDADESUSER.length == 0">
+                                        <mat-card>
+                                            <mat-card-content>
+                                                Sem penalidades atribuidas
+                                            </mat-card-content>
+                                        </mat-card>
+                                    </div>
+                                    <div *ngIf="PENALIDADESUSER.length > 0">
+                                        <table class="table  ">
+                                            <thead>
+                                                <th>Bonus</th>
+                                                <th>Data</th>
+                                                <th class="text-center">Pontos</th>
+                                            </thead>
+                                            <tbody *ngFor="let penalidade of PENALIDADESUSER">
+                                                <td class="tbInicio">{{penalidade.penalidade}}</td>
+                                                <td class="tbMeio">{{penalidade.updated_at | date:'dd/ MMM /YYYY'}}</td>
+                                                <td class="text-center"><strong>{{penalidade.pontos_penalidade}} pontos</strong> </td>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,6 +391,7 @@
                 </section>
             </div>
         </div>
+
     </div>
     <div class="col-sm-12 col-lg-2">
 

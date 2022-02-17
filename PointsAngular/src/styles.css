@@ -8,6 +8,8 @@
     --color-red: #B82601;
     --color-roxo: #803470;
     --color-azul-roxo: linear-gradient(180deg, rgba(0, 127, 185), rgb(129, 55, 114, 09));
+    --barlow: 'Barlow', sans-serif;
+    --lora: 'Lora', serif;
 }
 
 html,
@@ -20,6 +22,7 @@ body {
     padding: 0.3125rem;
     margin-top: 1.25rem;
     margin-bottom: 2.5rem;
+    margin-right: 0px;
 }
 
 .flex-rw-cntr {

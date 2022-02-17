@@ -1,3 +1,5 @@
+import { AuthService } from './config/auth.service';
+import { AuthGuard } from './guard/auth-guard';
 import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +22,10 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { PointServiceService } from './point-service.service';
+import { DialogueMesteComponent } from './dialogue/dialogue-meste/dialogue-meste.component';
+import { DialoguePupiloComponent } from './dialogue/dialogue-pupilo/dialogue-pupilo.component';
+import { UserComponent } from './views/user/user.component';
+import { MarujoComponent } from './views/marujo/marujo.component';
 
 registerLocaleData(localePt);
 
@@ -34,7 +39,11 @@ registerLocaleData(localePt);
     CreateComponent,
     PageNotFoundComponent,
     LoginComponent,
-    
+    DialogueMesteComponent,
+    DialoguePupiloComponent,
+    UserComponent,
+    MarujoComponent,
+
 
     
     
@@ -56,9 +65,11 @@ registerLocaleData(localePt);
   
   providers: [
     {provide: LOCALE_ID, useValue:'pt-BR'},
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
-    {provide:LoginComponent}
-  ],
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}, 
+    {provide: AuthGuard} ,
+    {provide:AuthService}],
+
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }

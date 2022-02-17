@@ -1,0 +1,126 @@
+.btn-position {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-ex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-size: 1.125rem;
+}
+
+.cardPrincipal {
+    display: flex;
+    flex-direction: row;
+    height: 70%;
+}
+
+.positionEnd {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    text-align: center;
+    padding-right: 0.9375rem;
+}
+
+.card-title {
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+    font-size: 1.5rem;
+    padding: 1.5625rem;
+    color: goldenrod;
+}
+
+.container {
+    width: 100%;
+    margin-bottom: 1.5625rem;
+}
+
+.tabela {
+    margin-top: -0.9375rem;
+}
+
+hr {
+    margin-top: 0.9375rem;
+    margin-bottom: 1.5625rem;
+    margin-left: 20%;
+    width: 60%;
+    align-self: center;
+    height: 0.225rem;
+    color: rgb(35, 35, 177);
+}
+
+.botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.marujo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--color-azul-roxo);
+    width: 15.625rem;
+    color: aliceblue;
+    font-size: 1.125rem;
+}
+
+.marujo a {
+    text-decoration: none !important;
+    color: aliceblue;
+}
+
+.premio {
+    background-color: rgb(255, 197, 50);
+    width: 15.625rem;
+    color: rgb(255, 255, 255);
+}
+
+.missao {
+    width: 15.625rem;
+    background-image: url(../../../assets/backbtn.png);
+    background-size: 65%;
+    color: rgb(255, 255, 255);
+    text-shadow: -0.375rem 0rem 0.8125rem rgb(41, 0, 138);
+    font-weight: bolder;
+}
+
+.header-premio {
+    background-color: rgb(255, 197, 50);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+.header-missao {
+    background-image: url(../../../assets/backbtn.png);
+    background-size: 65%;
+    color: rgb(255, 255, 255);
+    text-shadow: -0.375rem 0rem 0.8125rem rgb(41, 0, 138);
+    font-weight: bolder;
+}
+
+.w100 {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0.9375rem;
+}
+
+.btn-component {
+    background-color: rgb(42 99 149);
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .btn {
+        width: 100% !important;
+        margin-top: 1.5625rem;
+    }
+}

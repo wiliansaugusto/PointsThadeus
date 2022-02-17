@@ -9,7 +9,7 @@
                     <h2>Points Tadeus</h2>
                 </mat-card-title>
                 <hr>
-                <mat-card-content class="form-corpo jumbotrom">
+                <mat-card-content class="form-corpo ">
                     <h2>Entrar</h2>
                     <hr style="margin-top: 50px;">
                     <form [formGroup]="loginForm" #loginFormDirective="ngForm">
@@ -35,6 +35,15 @@
               </button>
                     <button mat-raised-button color="primary" (click)="login()">Entrar</button>
                 </mat-card-actions>
+            </mat-card>
+            <mat-card class="text-center login-card ">
+                <mat-card-title>
+                    Não tem uma conta ainda?
+                </mat-card-title>
+                <mat-card-content>
+                    <a class="btns " routerLink="/create-user"><button mat-raised-button mat-raised-button color="primary"> 
+                        <mat-icon>people</mat-icon>  Cadastre - se</button></a>
+                </mat-card-content>
             </mat-card>
         </div>
     </div>

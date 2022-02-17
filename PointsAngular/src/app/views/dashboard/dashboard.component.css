@@ -117,3 +117,89 @@ table {
     display: flex;
     flex-flow: row-reverse wrap;
 }
+
+.tituloForm {
+    font-family: var(--lora);
+    font-weight: 800;
+}
+
+.subtitle {
+    font-family: var(--lora);
+    margin-left: 2.5rem;
+    margin-right: 2.1875rem;
+}
+
+.corpo-form {
+    display: flex;
+    flex-flow: row, wrap;
+    justify-content: space-between;
+    padding-left: 2.5rem;
+    padding-right: 10%;
+    width: 100%;
+}
+
+.btn-salvar {
+    width: 18.125rem;
+    height: 3.125rem;
+    margin-left: 5%;
+}
+
+.btn-penalidade {
+    width: 18.125rem;
+    height: 3.125rem;
+    margin-left: 5%;
+    background-color: rgb(216, 108, 45);
+}
+
+.btn_novo {
+    background-image: var(--color-azul-roxo);
+}
+
+.input-form {
+    padding-left: 1.25rem;
+    margin-right: 1.875rem;
+}
+
+.ptNegativo {
+    width: 180px
+}
+
+.textoPontos {
+    width: 100%;
+}
+
+.MT30 {
+    padding-top: 30px;
+}
+
+.texto-nulo {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 1.5625rem;
+    text-align: center;
+}
+
+.tbMeio {
+    width: 20%;
+}
+
+.tbInicio {
+    width: 60%;
+}
+
+
+/*Usado para ajustar a responsividade*/
+
+@media screen and (max-width: 800px) {
+    .corpo-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-salvar {
+        margin-left: 0.9375rem;
+    }
+    .ptNegativo {
+        width: 100%;
+    }
+}

@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-lg-6 ">
         <mat-card class="form-style">
             <mat-card-header>
-                <mat-card-title class="title-card"> {{ actionName }} Usuario </mat-card-title>
+                <mat-card-title class="title-card"> {{ actionName }} </mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <form [formGroup]="usuarioForm" #usuarioFormDirective="ngForm">
@@ -11,13 +11,6 @@
                         <mat-form-field>
                             <mat-label>Nome Completo</mat-label>
                             <input matInput type="text" formControlName="nomeCompleto">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Categoria</mat-label>
-                            <mat-select matInput formControlName="categoria">
-                                <mat-option value="Mestre">Mestre</mat-option>
-                                <mat-option value="Pupilo">Pupilo</mat-option>
-                            </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="flex-clmn">
