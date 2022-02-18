@@ -58,8 +58,10 @@ export class PointServiceService {
   }
 
   public capMarujo(id:any):Observable<any>{
-      return this.http.get<any>(`${environment.apiBaseEndpointUrl}cap-mar/`+id)
+      return this.http.get<any>(`${environment.apiBaseEndpointUrl}cap-mar/`+id);
       }
 
-   
+   public getCategoria(id:any):Observable<any>{
+     return this.http.get<any>(`${environment.apiBaseEndpointUrl}usercategoria/`+id);
+   }
 }

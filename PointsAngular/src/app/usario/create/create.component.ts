@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.setCategoria();
-    
+
   }
 
 
@@ -48,6 +48,7 @@ export class CreateComponent implements OnInit {
       
       
     })
+
   }
   public cancel() {
     this.formCloseEvent.emit(false);
@@ -55,13 +56,16 @@ export class CreateComponent implements OnInit {
   }
 
    setCategoria(){
+    
     if(this.auth.getIdCapitao() == undefined){
       this.actionName = "Cadastrar novo Capitão";
+      
       return"capitao";  
     }
     this.actionName = "Cadastrar novo Marujo";
       return "marujo";
    }
+  
   public save() {
     var usuarioNovo : any = {
      nomeCompleto:this.usuarioForm.value['nomeCompleto'] ,
@@ -73,6 +77,7 @@ export class CreateComponent implements OnInit {
      categoria:this.setCategoria(),
      idCapitao: this.auth.getIdCapitao(),
     };
+    
     var idadevalidada:number = this.validarIdade(usuarioNovo.dtNascimento,usuarioNovo.categoria);
 
     if(usuarioNovo.categoria == "capitao"){

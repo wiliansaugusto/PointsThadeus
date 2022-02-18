@@ -226,4 +226,8 @@ class ApiController extends Controller
         $userDecode = json_encode($usuario);
         return response($userDecode, 200);
     }
+
+    public function userCategoria($id){
+        return response (Usuario::where("id",$id)->get('categoria')->toJson(JSON_PRETTY_PRINT), 200);
+    }
 }

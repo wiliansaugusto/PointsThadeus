@@ -127,7 +127,7 @@ export class MarujoComponent implements OnInit {
     });
 
     this.premioForm = this.formBuilder.group({
-      idUsuario:[''],
+        idUsuario:[''],
        premioSave:[''],
        pontosSave:['']
     })
@@ -140,8 +140,8 @@ export class MarujoComponent implements OnInit {
       idUsuario: this.premioForm.value['idUsuario'],
 
     }
+    console.log(item)
     if(this.premioForm.value['idUsuario'] == "true"){
-     
 
     this.marujo.forEach((element: any ) => {
       var item :any ={
@@ -160,6 +160,7 @@ export class MarujoComponent implements OnInit {
       })
       setTimeout(() => {
         this.getAllPremios();
+        this.modalService.dismissAll();
       }, 1000);        
     });
     }else{
@@ -173,6 +174,7 @@ export class MarujoComponent implements OnInit {
       })
       setTimeout(() => {
         this.getAllPremios();
+        this.modalService.dismissAll();
       }, 1000);
     }
     
@@ -223,7 +225,8 @@ export class MarujoComponent implements OnInit {
       })
       setTimeout(() => {
         this.getAllMission();
-      }, 1500);        
+        this.modalService.dismissAll();
+      }, 1000);        
     });
     }else{
       this.api.saveMission(item).subscribe(
@@ -236,6 +239,7 @@ export class MarujoComponent implements OnInit {
       })
       setTimeout(() => {
         this.getAllMission();
+        this.modalService.dismissAll();
       }, 1000);
     }
     

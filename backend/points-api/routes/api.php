@@ -19,3 +19,4 @@ Route::post('addpenalidadepontos', [ApiController::class,'addPontosPenalidade'])
 Route::get('getbonus/{id}', [ApiController::class,'getPontosBonus']);
 Route::get('getpenalidades/{id}', [ApiController::class,'getPontosPenalidade']);
 Route::get("cap-mar/{id}", [ApiController::class, 'getCapMar']);
+Route::get("usercategoria/{id}", [ApiController::class, 'userCategoria']);

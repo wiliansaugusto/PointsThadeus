@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   //itens necessários para realizar a function collapse
   isMetasCollapsed= true;
-  isPupiloCollapsed = false;
+  isPupiloCollapsed = true;
   isBonusCollapsed = true;
   isPenalidadeCollapsed = true;
 
@@ -40,6 +40,8 @@ id = this.idUsuario;
 premio: string | undefined;
 pontosPremio!:any;
 categoria!: any;
+marujo!:any;
+
 
 // responsavél pela construção das tabelas
 displayedColumns = ['premio',  'pontosPremio', 'actions'];
@@ -74,19 +76,20 @@ public dataSource: any =[] ;
 public loadBonusForm(){
   this.bonusForm = this.formBuilder.group({
     bonus:[''],
-    pontos_bonus:['']
+    pontos_bonus:[''],
+    idUsuarioBonus:['']
   })
 }
 public loadPenalidadesForm(){
   this.penalidadeForm = this.formBuilder.group({
     penalidade:[''],
-    pontos_penalidade:['']
-
+    pontos_penalidade:[''],
+    idUsuarioPenalidade:['']
   })
 }
 public saveBonus(){
 var bonus:any  ={
-  id:this.idUsuario,
+  id: this.bonusForm.value['idUsuarioBonus'] == "" ? this.idUsuario : this.bonusForm.value['idUsuarioBonus'],
   bonus:this.bonusForm.value['bonus'],
   pontos_bonus:this.bonusForm.value['pontos_bonus']
 };
@@ -106,13 +109,13 @@ this.apiService.saveBonus(bonus).subscribe(
 
 public savePenalidade(){
   var penalidade:any  ={
-    id:this.idUsuario,
+    id:this.penalidadeForm.value['idUsuarioPenalidade'] == "" ? this.idUsuario:this.penalidadeForm.value['idUsuarioPenalidade'],
     penalidade:this.penalidadeForm.value['penalidade'],
     pontos_penalidade:this.penalidadeForm.value['pontos_penalidade']
   }
   this.apiService.savePenalidade(penalidade).subscribe(
     (resp:any) =>{
-      this.snackbar.showSnackBar("Penalidade credita: "+penalidade.pontos_penalidade+" pontos","Ok");
+      this.snackbar.showSnackBar("Penalidade creditada: "+penalidade.pontos_penalidade+" pontos","Ok");
       this.loadCapitao();
       this.penalidadeForm.reset();
       this.getPenalidades();  
@@ -165,11 +168,24 @@ this.idUsuario = this.auth.getIdCapitao();
       this.pontos = resp[0].pontos;
       this.idUsuario = resp[0].id;
       this.categoria = resp[0].categoria;
+      this.getMarujo(resp[0].id);
+        this.loadAllMissoes();
+        this.loadAllPremios();
+        this.getBonus();
+        this.getPenalidades();
     }
   )
   
 }
-
+ 
+public getMarujo(id:any){
+  this.apiService.capMarujo(id).subscribe(
+    (resp:any)=>{
+      this.marujo = resp;       
+      console.log(resp.categoria) 
+    }
+  )
+}
   openPupilo(){
     // salva missao
     const dialogRefPupilo = this.dialog.open(DialoguePupiloComponent,

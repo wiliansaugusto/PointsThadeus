@@ -181,7 +181,7 @@
                                         <!--relacionado as metas-->
                                         <mat-card *ngIf="dataSource.length == 0">
                                             <mat-card-content>
-                                                <h3>Não há Premios para exibir</h3>
+                                                <h3>Não há Prêmios para exibir</h3>
                                             </mat-card-content>
                                         </mat-card>
                                         <div class="tblMetas  mat-elevation-z8" *ngIf="dataSource.length >0">
@@ -225,7 +225,7 @@
                                     <div class="col-sm-12 col-lg-6 ">
                                         <mat-card *ngIf="DATATASK.length == 0">
                                             <mat-card-content>
-                                                <h3>Não há Premios para exibir</h3>
+                                                <h3>Não há missões para exibir</h3>
                                             </mat-card-content>
                                         </mat-card>
                                         <div class="tblMetas  mat-elevation-z8" *ngIf="DATATASK.length > 0">
@@ -299,8 +299,13 @@
                                         <mat-label>Pontos Extras </mat-label>
                                         <input matInput type="number" formControlName="pontos_bonus">
                                     </mat-form-field>
-
-
+                                    <mat-form-field class="input-form linha" appearance="fill">
+                                        <mat-label>Selecione o seu subordinado</mat-label>
+                                        <mat-select>
+                                            <mat-option value=""> {{capitao}} </mat-option>
+                                            <mat-option *ngFor="let item of marujo " value="{{item[0].id}} "> {{item[0].nmUSuario}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </form>
                                 <button class="btn-salvar btn-bonus" mat-raised-button color="primary" (click)="saveBonus()">Salvar Bonus</button>
 
@@ -357,8 +362,13 @@
                                         <mat-label>Pontos Negativo </mat-label>
                                         <input matInput type="number" formControlName="pontos_penalidade">
                                     </mat-form-field>
-
-
+                                    <mat-form-field class="input-form linha" appearance="fill">
+                                        <mat-label>Selecione o seu subordinado</mat-label>
+                                        <mat-select>
+                                            <mat-option style="background-color: whitesmoke;" value=""> {{capitao}} </mat-option>
+                                            <mat-option *ngFor="let itemDelete of marujo " value="{{itemDelete[0].id}} "> {{itemDelete[0].nmUSuario}} </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </form>
                                 <button class="btn-penalidade" mat-raised-button color="primary" (click)="savePenalidade()">Salvar Penalidade</button>
                                 <div class="MT30">
